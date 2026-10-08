@@ -1,0 +1,73 @@
+[data-toploader] {
+  position: fixed;
+  inset-inline: 0;
+  top: 0;
+  z-index: 9999;
+  height: var(--toploader-height, 2px);
+  pointer-events: none;
+}
+
+[data-toploader]::before {
+  content: "";
+  display: block;
+  height: 100%;
+  background: currentColor;
+  transform-origin: left;
+  opacity: 0;
+  transition-property: scale, opacity;
+  transition-duration: 200ms;
+  transition-delay: 0ms, 250ms;
+  transition-timing-function: ease-out;
+}
+
+:root:has([data-toploader-hold]) [data-toploader]:not([data-toploader-state="finishing"])::before,
+[data-toploader-state="loading"]::before {
+  opacity: 1;
+  animation: toploader-fill var(--toploader-fill-duration, 12s) cubic-bezier(0, 0.7, 0.2, 1) forwards;
+  transition-property: opacity;
+  transition-duration: 100ms;
+  transition-delay: 0ms;
+}
+
+[data-toploader-state="finishing"]::before {
+  animation: toploader-finish 450ms ease-out forwards;
+  transition-property: scale;
+  transition-duration: 200ms;
+  transition-delay: 0ms;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes toploader-fill {
+    from {
+      scale: 0.08 1;
+    }
+
+    to {
+      scale: 0.9 1;
+    }
+  }
+}
+
+@keyframes toploader-finish {
+  from,
+  55% {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+[data-toploader-detached] {
+  view-transition-name: toploader;
+}
+
+::view-transition-group(toploader),
+::view-transition-new(toploader) {
+  animation: none;
+}
+
+::view-transition-old(toploader) {
+  display: none;
+}
