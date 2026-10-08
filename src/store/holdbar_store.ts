@@ -1,6 +1,6 @@
-import type { ToploaderState } from "./type.js";
+import type { HoldbarState } from "./type.js";
 
-let state: ToploaderState = "idle";
+let state: HoldbarState = "idle";
 let holds = 0;
 let startedAt = 0;
 let minVisible = 0;
@@ -8,7 +8,7 @@ let finishTimeout: number | undefined;
 
 const listeners = new Set<() => void>();
 
-const setState = (next: ToploaderState) => {
+const setState = (next: HoldbarState) => {
   state = next;
   listeners.forEach((listener) => listener());
 };
@@ -22,7 +22,7 @@ const finish = () => {
   if (state === "loading") setState("finishing");
 };
 
-export const TOPLOADER_STORE = {
+export const HOLDBAR_STORE = {
   hold: () => {
     holds += 1;
     window.clearTimeout(finishTimeout);

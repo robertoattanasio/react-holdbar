@@ -1,1 +1,1 @@
-export type ToploaderState = "idle" | "loading" | "finishing";
+export type HoldbarState = "idle" | "loading" | "finishing";

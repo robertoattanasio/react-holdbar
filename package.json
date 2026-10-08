@@ -1,10 +1,10 @@
 {
-  "name": "react-toploader",
+  "name": "react-holdbar",
   "version": "0.1.0",
   "description": "A CSS-native top loading bar for React: mount a Hold wherever something is loading, and the bar stays open until the last one is gone.",
   "keywords": [
     "react",
-    "toploader",
+    "top-loader",
     "loading-bar",
     "progress",
     "suspense",
@@ -14,13 +14,13 @@
   ],
   "license": "MIT",
   "author": "Roberto Attanasio",
-  "homepage": "https://dev.robertoattanasio.com/react-toploader",
+  "homepage": "https://dev.robertoattanasio.com/react-holdbar",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/robertoattanasio/react-toploader.git"
+    "url": "git+https://github.com/robertoattanasio/react-holdbar.git"
   },
   "bugs": {
-    "url": "https://github.com/robertoattanasio/react-toploader/issues"
+    "url": "https://github.com/robertoattanasio/react-holdbar/issues"
   },
   "type": "module",
   "main": "./dist/index.js",
@@ -28,7 +28,7 @@
   "files": [
     "dist",
     "src",
-    "toploader.css"
+    "holdbar.css"
   ],
   "workspaces": [
     "."
@@ -44,7 +44,7 @@
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
     },
-    "./toploader.css": "./toploader.css"
+    "./holdbar.css": "./holdbar.css"
   },
   "scripts": {
     "ts:check": "tsc --noEmit",

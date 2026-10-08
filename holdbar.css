@@ -1,13 +1,13 @@
-[data-toploader] {
+[data-holdbar] {
   position: fixed;
   inset-inline: 0;
   top: 0;
   z-index: 9999;
-  height: var(--toploader-height, 2px);
+  height: var(--holdbar-height, 2px);
   pointer-events: none;
 }
 
-[data-toploader]::before {
+[data-holdbar]::before {
   content: "";
   display: block;
   height: 100%;
@@ -20,24 +20,24 @@
   transition-timing-function: ease-out;
 }
 
-:root:has([data-toploader-hold]) [data-toploader]:not([data-toploader-state="finishing"])::before,
-[data-toploader-state="loading"]::before {
+:root:has([data-holdbar-hold]) [data-holdbar]:not([data-holdbar-state="finishing"])::before,
+[data-holdbar-state="loading"]::before {
   opacity: 1;
-  animation: toploader-fill var(--toploader-fill-duration, 12s) cubic-bezier(0, 0.7, 0.2, 1) forwards;
+  animation: holdbar-fill var(--holdbar-fill-duration, 12s) cubic-bezier(0, 0.7, 0.2, 1) forwards;
   transition-property: opacity;
   transition-duration: 100ms;
   transition-delay: 0ms;
 }
 
-[data-toploader-state="finishing"]::before {
-  animation: toploader-finish 450ms ease-out forwards;
+[data-holdbar-state="finishing"]::before {
+  animation: holdbar-finish 450ms ease-out forwards;
   transition-property: scale;
   transition-duration: 200ms;
   transition-delay: 0ms;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  @keyframes toploader-fill {
+  @keyframes holdbar-fill {
     from {
       scale: 0.08 1;
     }
@@ -48,7 +48,7 @@
   }
 }
 
-@keyframes toploader-finish {
+@keyframes holdbar-finish {
   from,
   55% {
     opacity: 1;
@@ -59,15 +59,15 @@
   }
 }
 
-[data-toploader-detached] {
-  view-transition-name: toploader;
+[data-holdbar-detached] {
+  view-transition-name: holdbar;
 }
 
-::view-transition-group(toploader),
-::view-transition-new(toploader) {
+::view-transition-group(holdbar),
+::view-transition-new(holdbar) {
   animation: none;
 }
 
-::view-transition-old(toploader) {
+::view-transition-old(holdbar) {
   display: none;
 }

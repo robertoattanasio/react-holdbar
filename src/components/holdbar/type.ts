@@ -1,6 +1,6 @@
 import type { ComponentPropsWithoutRef } from "react";
 
-export type ToploaderProps = ComponentPropsWithoutRef<"div"> & {
+export type HoldbarProps = ComponentPropsWithoutRef<"div"> & {
   height?: number;
   fillDuration?: number;
   minVisible?: number;

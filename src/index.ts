@@ -1,3 +1,3 @@
-export { Toploader } from "./components/toploader/toploader.js";
+export { Holdbar } from "./components/holdbar/holdbar.js";
 
-export type { ToploaderProps } from "./components/toploader/type.js";
+export type { HoldbarProps } from "./components/holdbar/type.js";
