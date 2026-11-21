@@ -1,84 +1,46 @@
 # react-holdbar
 
-A CSS-native top loading bar for React: mount a `Holdbar.Hold` wherever something is loading, and the bar stays open until the last one is gone.
+`react-holdbar` adds a loading bar to the top of your React app. Mount `Holdbar.Hold` while something is loading, wherever it makes sense in your component tree. The bar opens when the first hold appears and closes after the last one disappears. It can also appear before hydration: the stylesheet detects holds in the page without waiting for JavaScript.
 
 Package: [npmjs.com/package/react-holdbar](https://www.npmjs.com/package/react-holdbar)
 
 Documentation: [dev.robertoattanasio.com/react-holdbar](https://dev.robertoattanasio.com/react-holdbar)
 
-## Install
+## Installation
 
 ```sh
 npm install react-holdbar
 ```
 
-## Usage
+React 19 and React DOM 19 are required as peer dependencies.
 
-Import the stylesheet once, in your entry stylesheet or entry module:
+Import the stylesheet once in your app's entry point or main stylesheet:
 
-```css
-@import "react-holdbar/holdbar.css";
+```ts
+import "react-holdbar/holdbar.css";
 ```
 
-Render the bar once, near the root:
+Then mount the bar near the app root and set its color:
 
 ```tsx
 import { Holdbar } from "react-holdbar";
 
-<Holdbar className="text-primary" height={3}>
-  {isNavigating && <Holdbar.Hold />}
-</Holdbar>;
+<Holdbar style={{ color: "royalblue" }} />;
 ```
 
-Anything else that is loading mounts its own Hold, wherever it lives in the tree:
+## API
 
-```tsx
-{
-  mutation.isPending && <Holdbar.Hold />;
-}
+The package includes the bar, the hold that keeps it open, and the stylesheet that draws it. The guides explain each part in more detail:
 
-<Suspense fallback={<Holdbar.Hold />}>
-  <Comments />
-</Suspense>;
-```
+- [Holdbar](./docs/holdbar.md)
+- [Holdbar.Hold](./docs/hold.md)
+- [States](./docs/states.md): how the bar moves from one state to the next
+- [Stylesheet](./docs/stylesheet.md): custom properties, animations, reduced motion, view transitions
 
-## How it works
+## Scripts
 
-There is no `start()` and no `done()`. The bar is open while at least one `Holdbar.Hold` is mounted, and it finishes when the last one goes. Two loads that overlap don't need to know about each other.
-
-The check is plain CSS: `:root:has([data-holdbar-hold])`. A Hold in a Suspense fallback ends up in the server's HTML, so with streaming SSR the bar is already moving before hydration.
-
-After hydration a small store takes over the timing: it keeps the bar filling for at least `minVisible`, and it plays the finish to the end, at full colour, however short the load was. A Hold that arrives during the finish waits for it, then the bar starts again.
-
-## Props
-
-| prop                       | default | what it does                                                    |
-| -------------------------- | ------- | --------------------------------------------------------------- |
-| `height`                   | `2`     | the thickness of the bar, in pixels                             |
-| `fillDuration`             | `12000` | milliseconds to fill towards 90%                                |
-| `minVisible`               | `0`     | milliseconds the bar keeps filling at least, before it finishes |
-| `detachFromViewTransition` | `false` | keeps the bar out of the page's view transition                 |
-
-Every other prop goes to the `div`. The bar is painted with `currentColor`, so `color` sets its colour. For anything the props don't cover, style the `::before`, which is the bar itself, with plain CSS after the library's import. The stylesheet isn't in a cascade layer, so Tailwind utilities can't override it.
-
-`Holdbar.Hold` takes no props.
-
-## Server Components
-
-`Holdbar` and `Holdbar.Hold` can both be rendered from a Server Component, for example the Hold as a Suspense fallback.
-
-## Without React
-
-The stylesheet works on its own, with the same markup the components render:
-
-```html
-<div data-holdbar aria-hidden="true"></div>
-
-<span data-holdbar-hold hidden></span>
-```
-
-The bar is open while an element with `data-holdbar-hold` is on the page. The timing needs the component: `minVisible`, and the finish that always plays to the end at full colour.
+For the available project scripts and what they do, see [docs/scripts.md](./docs/scripts.md).
 
 ## License
 
-MIT
+[MIT](./LICENSE)
