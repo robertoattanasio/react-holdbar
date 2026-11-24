@@ -1,6 +1,6 @@
 import { useLayoutEffect } from "react";
 
-import { HOLDBAR_STORE } from "../store/holdbar_store.js";
+import { HOLDBAR_STORE } from "../store/holdbar-store.js";
 
 export const useHoldbarHold = () => {
   useLayoutEffect(() => {

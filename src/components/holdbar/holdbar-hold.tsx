@@ -1,6 +1,6 @@
 "use client";
 
-import { useHoldbarHold } from "../../hooks/use_holdbar_hold.js";
+import { useHoldbarHold } from "../../hooks/use-holdbar-hold.js";
 
 export const HoldbarHold = () => {
   useHoldbarHold();

@@ -17,14 +17,14 @@ src/
   index.ts                  the only barrel
   components/holdbar/
     holdbar.tsx             the bar, and its Hold part
-    holdbar_client.tsx      the part of the bar that needs the browser
-    holdbar_hold.tsx        the hold
+    holdbar-client.tsx      the part of the bar that needs the browser
+    holdbar-hold.tsx        the hold
     type.ts                 the props
   hooks/
-    use_holdbar.ts          reads the state, sets minVisible
-    use_holdbar_hold.ts     registers a hold while mounted
+    use-holdbar.ts          reads the state, sets minVisible
+    use-holdbar-hold.ts     registers a hold while mounted
   store/
-    holdbar_store.ts        the state machine
+    holdbar-store.ts        the state machine
     type.ts                 the state
 ```
 
@@ -34,7 +34,7 @@ Components hold the UI, hooks connect them to the store, the store holds the log
 
 | What         | Convention         | Example                |
 | ------------ | ------------------ | ---------------------- |
-| folder, file | snake_case         | `hooks/use_holdbar.ts` |
+| folder, file | kebab-case         | `hooks/use-holdbar.ts` |
 | component    | `Holdbar*`         | `HoldbarClient`        |
 | part         | `Holdbar.Part`     | `Holdbar.Hold`         |
 | hook         | `useHoldbar*`      | `useHoldbarHold`       |

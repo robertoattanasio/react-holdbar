@@ -2,7 +2,7 @@
 
 import type { CSSProperties } from "react";
 
-import { useHoldbar } from "../../hooks/use_holdbar.js";
+import { useHoldbar } from "../../hooks/use-holdbar.js";
 import type { HoldbarProps } from "./type.js";
 
 export const HoldbarClient = ({

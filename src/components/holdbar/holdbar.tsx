@@ -1,5 +1,5 @@
-import { HoldbarHold } from "./holdbar_hold.js";
-import { HoldbarClient } from "./holdbar_client.js";
+import { HoldbarHold } from "./holdbar-hold.js";
+import { HoldbarClient } from "./holdbar-client.js";
 
 import type { HoldbarProps } from "./type.js";
 
