@@ -1,6 +1,6 @@
-import type { ComponentPropsWithoutRef } from "react";
+import type { ComponentProps } from "react";
 
-export type HoldbarProps = ComponentPropsWithoutRef<"div"> & {
+export type HoldbarProps = ComponentProps<"div"> & {
   height?: number;
   fillDuration?: number;
   minVisible?: number;

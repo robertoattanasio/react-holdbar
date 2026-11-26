@@ -4,7 +4,7 @@
 
 Package: [npmjs.com/package/react-holdbar](https://www.npmjs.com/package/react-holdbar)
 
-Documentation: [dev.robertoattanasio.com/react-holdbar](https://dev.robertoattanasio.com/react-holdbar)
+Documentation: [react-holdbar.robertoattanasio.com](https://react-holdbar.robertoattanasio.com)
 
 ## Installation
 
