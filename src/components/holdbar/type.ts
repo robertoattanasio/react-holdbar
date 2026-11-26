@@ -6,3 +6,7 @@ export type HoldbarProps = ComponentProps<"div"> & {
   minVisible?: number;
   detachFromViewTransition?: boolean;
 };
+
+export type HoldbarHoldProps = {
+  delay?: number;
+};

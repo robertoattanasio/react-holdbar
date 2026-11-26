@@ -11,7 +11,15 @@
   content: "";
   display: block;
   height: 100%;
-  background: currentColor;
+  background: linear-gradient(
+    90deg,
+    currentColor 0%,
+    currentColor 42%,
+    var(--holdbar-shine, color-mix(in srgb, currentColor 45%, white)) 50%,
+    currentColor 58%,
+    currentColor 100%
+  );
+  background-size: 300% 100%;
   transform-origin: left;
   opacity: 0;
   transition-property: scale, opacity;
@@ -23,7 +31,9 @@
 :root:has([data-holdbar-hold]) [data-holdbar]:not([data-holdbar-state="finishing"])::before,
 [data-holdbar-state="loading"]::before {
   opacity: 1;
-  animation: holdbar-fill var(--holdbar-fill-duration, 12s) cubic-bezier(0, 0.7, 0.2, 1) forwards;
+  animation:
+    holdbar-fill var(--holdbar-fill-duration, 12s) cubic-bezier(0.1, 0.6, 0.2, 1) forwards,
+    holdbar-shine var(--holdbar-shine-duration, 1.6s) linear infinite;
   transition-property: opacity;
   transition-duration: 100ms;
   transition-delay: 0ms;
@@ -39,11 +49,21 @@
 @media (prefers-reduced-motion: no-preference) {
   @keyframes holdbar-fill {
     from {
-      scale: 0.08 1;
+      scale: 0 1;
     }
 
     to {
       scale: 0.9 1;
+    }
+  }
+
+  @keyframes holdbar-shine {
+    from {
+      background-position: 100% 0;
+    }
+
+    to {
+      background-position: 0% 0;
     }
   }
 }

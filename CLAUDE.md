@@ -55,17 +55,17 @@ Components hold the UI, hooks connect them to the store, the store holds the log
 - `holdbar.tsx` has no directive: it renders `HoldbarClient` and carries `Holdbar.Hold`, so both work from Server Components.
 - `HoldbarClient` and `HoldbarHold` are `"use client"` and never exported. `Holdbar.Hold` is the only way to reach the Hold.
 - `HoldbarClient` writes the state to `data-holdbar-state` and its props to custom properties. It never decides how anything looks.
-- The Hold renders a hidden, empty `span` with `data-holdbar-hold` and takes no props.
+- The Hold renders a hidden, empty `span` with `data-holdbar-hold`. Its only prop is `delay`: the hold counts, and the attribute appears, only once the delay has passed; unmounted earlier, it never counted.
 - Holds register in layout effects.
 
 ## Stylesheet
 
 - No component imports it: the consumer imports `react-holdbar/holdbar.css` once.
-- The bar is the `::before` of `[data-holdbar]`, painted with `currentColor`.
+- The bar is the `::before` of `[data-holdbar]`, painted with `currentColor`, with a shine crossing it while it loads (`--holdbar-shine`, `--holdbar-shine-duration`).
 - `:root:has([data-holdbar-hold])` opens the bar without JavaScript. It never applies during `finishing`.
 - `finishing` is an animation, not a transition, so it always starts at full opacity. Its `animationend` drives `settle`: the name `holdbar-finish` is part of the contract with `HoldbarClient`.
 - Custom properties have their default as the `var()` fallback, in the one place they're used.
-- With reduced motion the fill keyframes aren't defined.
+- With reduced motion the fill and shine keyframes aren't defined.
 
 ## Conventions
 
