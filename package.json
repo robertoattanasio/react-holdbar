@@ -1,6 +1,6 @@
 {
   "name": "react-holdbar",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "A CSS-native top loading bar for React: mount a Hold wherever something is loading, and the bar stays open until the last one is gone.",
   "keywords": [
     "react",
